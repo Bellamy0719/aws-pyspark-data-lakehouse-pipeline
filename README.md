@@ -1,4 +1,4 @@
-# ☁️ Databricks + AWS Stock Data Lakehouse  
+# Databricks + AWS Stock Data Lakehouse  
 ### Building a 3-Tier S3 Data Lake with PySpark, Glue, Athena, and QuickSight  
 
 **Portfolio project demonstrating a cloud data lakehouse architecture on AWS with Databricks and PySpark.**  
