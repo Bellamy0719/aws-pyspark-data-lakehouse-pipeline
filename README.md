@@ -41,14 +41,15 @@ Data is ingested, transformed, and stored as partitioned Parquet files on S3, in
 ```
 databricks-aws-stock-lakehouse/
 ├── notebooks/
-│   └── stock_etl_databricks.ipynb
-├── assets/
-│   ├── architecture.png
-│   ├── quicksight_dashboard.png
-│   ├── glue_catalog.png
-│   └── athena_query.png
-├── scripts/
-│   └── pyspark_etl.py
+│   └── AWS Databricks PySpark Stock Data Lakehouse.ipynb
+│  
+├── screenshots/
+│   ├── aws_s3
+│   ├── aws_glue
+│   ├── aws_redshift
+│   ├── aws_athena
+│   └── aws_quicksight
+│  
 ├── README.md
 └── LICENSE
 ```
