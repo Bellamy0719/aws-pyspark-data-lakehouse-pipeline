@@ -81,7 +81,8 @@ Enables separation of concerns — each layer has a distinct purpose.
 Columnar + partitioned Parquet improves query speed and cost.
 Future-proof — new metrics can be appended without rewriting raw data.
 
-![Tableau database screenshot](screenshots/s3_bucket.png)
+![aws_s3](screenshots/aws_s3/s3_layers.png)
+![aws_s3](screenshots/aws_s3/s3_ticker.png)
 
 ### Step 2. Compute Layer: Databricks + PySpark (Serverless Option)
 
@@ -92,6 +93,9 @@ notebooks/AWS Databricks PySpark Stock Data Lakehouse.ipynb.
 
 Performed cleaning, casting, and window-based technical indicators:
 SMA20/50/200, RSI14, MACD(12,26,9), Bollinger Bands, volume MAs, buy/sell flags.
+
+![databrick](screenshots/databrick/databrick_example.png)
+
 
 Why:
 
@@ -111,7 +115,7 @@ Centralized metadata shared across AWS services (Athena, Redshift, EMR).
 Automatically detects partitions and schema evolution.
 Supports data governance and lineage tracking.
 
-(Place screenshots at screenshots/aws_glue/ — crawler config, database & tables, partition discovery.)
+![aws_s3](screenshots/aws_glue/glue_schema.png)
 
 ### Step 4. Serverless Querying: Athena
 
@@ -124,6 +128,8 @@ Why:
 
 Fully serverless SQL engine — no cluster setup, pay only per data scanned.
 Works efficiently with Parquet + partitions, minimizing scan cost.
+
+![aws_s3](screenshots/aws_athena/athena_query.png)
 
 ### Step 5. Data Warehouse Layer: Redshift / Spectrum
 
@@ -138,6 +144,8 @@ Why:
 Redshift provides high-performance OLAP for heavy BI workloads.
 Hybrid model: keep hot data in Redshift, cold data in S3 (cost-efficient).
 
+![aws_s3](screenshots/aws_redshift/redshift_overview.png)
+
 ### Step 6. Visualization Layer: QuickSight
 
 What:
@@ -149,5 +157,7 @@ Why:
 
 Cloud-native BI, zero maintenance, and SPICE acceleration.
 Easy sharing and IAM-based access control.
+
+![aws_s3](screenshots/aws_quicksight/quicksight_avg_price.png)
 
 
