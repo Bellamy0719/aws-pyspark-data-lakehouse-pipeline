@@ -1,0 +1,23 @@
+# Core data processing
+pyspark>=3.4.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Data ingestion
+yfinance>=0.2.40
+requests>=2.31.0
+
+# AWS integration
+boto3>=1.34.0
+botocore>=1.34.0
+
+# Visualization & analysis (optional, for local/QuickSight reference)
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Data validation & quality checks (optional, used in earlier pipelines)
+great_expectations>=0.18.0
+
+# Utility
+python-dateutil>=2.9.0
+tqdm>=4.66.0
