@@ -31,4 +31,17 @@ Portfolio project demonstrating a cloud data lakehouse architecture on AWS with 
                  └────► Tableau/QuickSight
 ```
                  
-
+```
+databricks-aws-stock-lakehouse/
+├── notebooks/
+│   └── stock_etl_databricks.ipynb
+├── assets/
+│   ├── architecture.png
+│   ├── quicksight_dashboard.png
+│   ├── glue_catalog.png
+│   └── athena_query.png
+├── scripts/
+│   └── pyspark_etl.py
+├── README.md
+└── LICENSE
+```
