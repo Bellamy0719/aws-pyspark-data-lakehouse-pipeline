@@ -84,7 +84,7 @@ Future-proof — new metrics can be appended without rewriting raw data.
 ![aws_s3](screenshots/aws_s3/s3_layers.png)
 ![aws_s3](screenshots/aws_s3/s3_ticker.png)
 
-### Step 2. Compute Layer: Databricks + PySpark (Serverless Option)
+### Step 2. Compute Layer: Databricks + PySpark
 
 What:
 
