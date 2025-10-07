@@ -160,4 +160,33 @@ Easy sharing and IAM-based access control.
 
 ![aws_s3](screenshots/aws_quicksight/quicksight_avg_price.png)
 
+### Schema & Partitioning Design
+
+Storage Format: Parquet (columnar, compressed).
+Partitions: ticker, year for time-series optimization.
+Schema Evolution: Processed layer defines canonical schema; feature layer appends new fields safely.
+
+### Security & Permissions
+
+Used IAM Roles / Instance Profiles to grant Databricks access to S3, Glue, and Athena.
+Followed least privilege principle (path-level access).
+Optional VPC endpoint for secure private network communication.
+
+### Near Production-Grade
+
+Multi-layered S3 data lake architecture.
+Scalable distributed PySpark computation.
+Centralized metadata (Glue Catalog).
+Serverless query layer (Athena / optional Redshift).
+Integrated BI visualization (QuickSight).
+Clear folder hierarchy + reproducible notebooks.
+
+### Screenshot Guide
+Folder	Recommended Content
+aws_s3/	Three-tier S3 folder layout showing partitions (ticker= / year=).
+aws_glue/	Glue crawler setup, databases, and partition discovery pages.
+aws_athena/	SQL queries and results (showing low data scan cost).
+aws_redshift/	External schema or warehouse table queries.
+aws_quicksight/	Dashboard overview and key charts (trend, RSI, MACD, Bollinger Bands).
+
 
