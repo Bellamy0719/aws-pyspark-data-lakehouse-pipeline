@@ -1,5 +1,7 @@
 # Databricks real-time streaming + AWS Stock Data Lakehouse  
 ### Building a 3-Tier S3 Data Lake with PySpark, Glue, Athena, and QuickSight  
+### > ▶️ Check out the real-time streaming extension of this project:
+> [aws-kinesis-pyspark-streaming-pipeline](https://github.com/Bellamy0719/aws-kinesis-pyspark-streaming-pipeline)
 
 **Portfolio project demonstrating a cloud data lakehouse architecture on AWS with Databricks and PySpark.**  
 This project implements a 3-layer (raw, processed, curated) data lake design for scalable and queryable stock analytics.  
