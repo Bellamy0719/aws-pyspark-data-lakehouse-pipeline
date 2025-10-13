@@ -73,23 +73,6 @@ All datasets are then cataloged in **AWS Glue**, queried in **Athena**, and visu
 | **Format**        | Parquet (partitioned by ticker & year)    |
 
 
-### Project Structure
-```
-databricks-aws-stock-lakehouse/
-├── notebooks/
-│   └── AWS Databricks PySpark Stock Data Lakehouse.ipynb   # Main end-to-end notebook
-│
-├── screenshots/
-│   ├── aws_s3/          # S3 multi-layer and partition structure
-│   ├── aws_glue/        # Glue crawlers & Data Catalog
-│   ├── aws_redshift/    # (Optional) Redshift schema / external tables
-│   ├── aws_athena/      # Athena queries and results
-│   └── aws_quicksight/  # QuickSight dashboards
-│
-├── README.md
-└── LICENSE
-```
-
 ### Pipeline Steps
 
 ### Step 1. S3 Data Layers (Raw → Processed → Curated → Features)
@@ -104,8 +87,11 @@ curated/stocks_features/: enriched feature layer — SMA, RSI, MACD, Bollinger B
 Why:
 
 Enables separation of concerns — each layer has a distinct purpose.
+
 Columnar + partitioned Parquet improves query speed and cost.
+
 Future-proof — new metrics can be appended without rewriting raw data.
+
 
 ![aws_s3](screenshots/aws_s3/s3_layers.png)
 ![aws_s3](screenshots/aws_s3/s3_ticker.png)
@@ -120,6 +106,7 @@ notebooks/AWS Databricks PySpark Stock Data Lakehouse.ipynb.
 Performed cleaning, casting, and window-based technical indicators:
 SMA20/50/200, RSI14, MACD(12,26,9), Bollinger Bands, volume MAs, buy/sell flags.
 
+Located in: [notebooks/databricks_streaming_producer.ipynb](notebooks/databricks_streaming_producer.ipynb)
 ![databrick](screenshots/databrick/databrick_example.png)
 
 
@@ -127,7 +114,7 @@ Why:
 
 PySpark provides distributed big-data processing across clusters.
 Window functions are natively optimized and scalable.
-Databricks Serverless eliminates infrastructure management — compute on demand, pay per use.
+Databricks Serverless eliminates infrastructure management to compute on demand, pay per use.
 
 ### Step 3. Metadata Layer: AWS Glue
 
@@ -152,7 +139,7 @@ Example query:
 
 Why:
 
-Fully serverless SQL engine — no cluster setup, pay only per data scanned.
+Fully serverless SQL engine with no cluster setup, pay only per data scanned.
 Works efficiently with Parquet + partitions, minimizing scan cost.
 
 ![aws_s3](screenshots/aws_athena/athena_query.png)
@@ -162,7 +149,7 @@ Works efficiently with Parquet + partitions, minimizing scan cost.
 What:
 
 Two integration options:
-Redshift Spectrum — query external Parquet data via Glue catalog.
+Redshift Spectrum to query external Parquet data via Glue catalog.
 Native Redshift Tables — load curated data for faster joins and aggregations.
 
 Why:
@@ -177,7 +164,7 @@ Hybrid model: keep hot data in Redshift, cold data in S3 (cost-efficient).
 What:
 
 Connected to Athena/Redshift datasets.
-Built visual dashboards — line charts, RSI thresholds (30/70), MACD histograms, Bollinger bands, and comparative performance.
+Built visual dashboards like line charts, RSI thresholds (30/70), MACD histograms, Bollinger bands, and comparative performance.
 
 Why:
 
@@ -185,6 +172,24 @@ Cloud-native BI, zero maintenance, and SPICE acceleration.
 Easy sharing and IAM-based access control.
 
 ![aws_s3](screenshots/aws_quicksight/quicksight_avg_price.png)
+
+
+### Project Structure
+```
+databricks-aws-stock-lakehouse/
+├── notebooks/
+│   └── AWS Databricks PySpark Stock Data Lakehouse.ipynb   # Main end-to-end notebook
+│
+├── screenshots/
+│   ├── aws_s3/          # S3 multi-layer and partition structure
+│   ├── aws_glue/        # Glue crawlers & Data Catalog
+│   ├── aws_redshift/    # (Optional) Redshift schema / external tables
+│   ├── aws_athena/      # Athena queries and results
+│   └── aws_quicksight/  # QuickSight dashboards
+│
+├── README.md
+└── LICENSE
+```
 
 ### Schema & Partitioning Design
 
