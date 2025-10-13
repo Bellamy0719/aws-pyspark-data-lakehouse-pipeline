@@ -1,22 +1,34 @@
-# Databricks real-time streaming + AWS Stock Data Lakehouse  
+# AWS PySpark Stock Data Lakehouse Pipeline — Databricks + S3 + Glue + Athena + QuickSight
 ### Building a 3-Tier S3 Data Lake with PySpark, Glue, Athena, and QuickSight  
-### > ▶️ Check out the real-time streaming extension of this project:
+### >  Check out the real-time streaming extension of this project:
 > [aws-kinesis-pyspark-streaming-pipeline](https://github.com/Bellamy0719/aws-kinesis-pyspark-streaming-pipeline)
 
-**Portfolio project demonstrating a cloud data lakehouse architecture on AWS with Databricks and PySpark.**  
-This project implements a 3-layer (raw, processed, curated) data lake design for scalable and queryable stock analytics.  
-Data is ingested, transformed, and stored as partitioned Parquet files on S3, integrated with AWS Glue, Athena, Redshift, and QuickSight for metadata management and visualization.  
+### 🧠 Project Overview
+A batch processing data lakehouse pipeline built with AWS and Databricks using PySpark.
+It fetches historical stock data, processes it through multiple layers (raw → processed → curated), and enables scalable analytics via Glue, Athena, and QuickSight.
 
-🔹 **Technologies:** Databricks · PySpark · AWS S3 · Glue · Athena · Redshift · QuickSight · Distributed Computing · Serverless · Parquet Partitioning
-🔹 **Focus:** Cloud data engineering architecture, PySpark transformation, and end-to-end analytics pipeline  
+This project demonstrates how to build a cloud-based data lakehouse architecture for batch processing of stock market data.
+Using Databricks (serverless PySpark) and AWS services, the pipeline extracts historical data, performs feature engineering, and organizes it into a three-tiered S3 structure:
 
-Architecture Overview
+**Raw layer** — stores unprocessed data from external sources (e.g., Yahoo Finance)
 
-Storage: S3 hosts the multi-layer data lake (raw → processed → curated → features).
-Compute: Databricks (serverless or cluster mode) runs PySpark for large-scale ETL and feature engineering.
-Metadata: AWS Glue crawlers catalog the data for downstream SQL tools.
-Query & Analysis: Athena and Redshift provide serverless or warehouse-level querying.
-Visualization: QuickSight powers interactive dashboards and analytics.
+**Processed layer** — cleansed and feature-enriched datasets
+
+**Curated layer** — analytics-ready Parquet files partitioned by ticker and year
+
+All datasets are then cataloged in **AWS Glue**, queried in **Athena**, and visualized through **QuickSight** dashboards.
+
+### Architecture Overview
+
+**Storage**: S3 hosts the multi-layer data lake (raw → processed → curated → features).
+
+**Compute**: Databricks (serverless or cluster mode) runs PySpark for large-scale ETL and feature engineering.
+
+**Metadata**: AWS Glue crawlers catalog the data for downstream SQL tools.
+
+**Query & Analysis**: Athena and Redshift provide serverless or warehouse-level querying.
+
+**Visualization**: QuickSight powers interactive dashboards and analytics.
 
 ```
                    yfinance API
@@ -27,27 +39,39 @@ Visualization: QuickSight powers interactive dashboards and analytics.
                   └──────────────┘
                          │
                          ▼
-               ┌──────────────────┐
-               │ Databricks +     │
-               │ PySpark ETL Job  │
+               ┌──────────────────┐                  ├─ Extract: fetch historical data 
+               │ Databricks +     │        ←         ├─ Transform: clean & compute indicators (SMA, RSI, MACD, etc.)
+               │ PySpark ETL Job  │                  ├─ Load: write to S3 layers (raw → processed → curated)
                └──────────────────┘
                          │
                          ▼
-             ┌───────────────┐
-             │ Processed (S3)│ ← Parquet, Features
-             └───────────────┘
+                 ┌───────────────┐                   ├─ Raw: unprocessed CSV/Parquet
+                 │ Processed (S3)│      ←            ├─ Processed: cleaned & enriched data
+                 └───────────────┘                   ├─ Curated: partitioned Parquet (ticker/year)
                          │
                          ▼
-             ┌───────────────┐
-             │ Curated (S3)  │ ← BI-ready, Delta
-             └───────────────┘
-                 │         │
-                 ▼         ▼
-              Glue      Athena/Redshift
-              Catalog       │
-                 │         ▼
-                 └────► Tableau/QuickSight
+                 ┌───────────────┐
+                 │ Curated (S3)  │      ←             BI-ready, Delta
+                 └───────────────┘
+                     │         │
+                     ▼         ▼                       ├─ Glue Crawler → generate schema
+                  Glue      Athena/Redshift     ←      ├─ Athena SQL layer → analytics queries
+                  Catalog       │
+                     │         ▼
+                     └────► Tableau/QuickSight     ←    Visualize stock performance and indicators
 ```
+
+### Tech Stack
+| Category          | Tools / Services                          |
+| ----------------- | ----------------------------------------- |
+| **Compute**       | Databricks (Serverless PySpark)           |
+| **Storage**       | AWS S3 (Raw / Processed / Curated layers) |
+| **Data Catalog**  | AWS Glue                                  |
+| **Query Engine**  | AWS Athena                                |
+| **Visualization** | AWS QuickSight                            |
+| **Data Source**   | yfinance (historical market data)         |
+| **Format**        | Parquet (partitioned by ticker & year)    |
+
 
 ### Project Structure
 ```
