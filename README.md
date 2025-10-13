@@ -106,7 +106,7 @@ notebooks/AWS Databricks PySpark Stock Data Lakehouse.ipynb.
 Performed cleaning, casting, and window-based technical indicators:
 SMA20/50/200, RSI14, MACD(12,26,9), Bollinger Bands, volume MAs, buy/sell flags.
 
-Located in: [notebooks/databricks_streaming_producer.ipynb](notebooks/databricks_streaming_producer.ipynb)
+Located in: [aws_databricks_pyspark_stock_data_lakehouse.ipynb](notebooks/aws_databricks_pyspark_stock_data_lakehouse.ipynb)
 ![databrick](screenshots/databrick/databrick_example.png)
 
 
@@ -178,7 +178,7 @@ Easy sharing and IAM-based access control.
 ```
 databricks-aws-stock-lakehouse/
 ├── notebooks/
-│   └── AWS Databricks PySpark Stock Data Lakehouse.ipynb   # Main end-to-end notebook
+│   └── aws_databricks_pyspark_stock_data_lakehouse.ipynb.ipynb   # Main end-to-end notebook
 │
 ├── screenshots/
 │   ├── aws_s3/          # S3 multi-layer and partition structure
