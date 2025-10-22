@@ -1,7 +1,13 @@
 # AWS PySpark Stock Data Lakehouse Pipeline — Databricks + S3 + Glue + Athena + QuickSight
 ### Building a 3-Tier S3 Data Lake with PySpark, Glue, Athena, and QuickSight  
+
 ### >  Check out the real-time streaming extension of this project:
 > [aws-kinesis-pyspark-streaming-pipeline](https://github.com/Bellamy0719/aws-kinesis-pyspark-streaming-pipeline)
+
+### Multi-Cloud Architecture
+This project has been reimplemented on Azure by using **AWLS + Databricks + Power BI** for identical ETL and analytical workflows
+### >  Check out the Azure Implementation
+> [azure_databricks_lakehouse_pipeline](https://github.com/Bellamy0719/azure_databricks_lakehouse_pipeline)
 
 ### 🧠 Project Overview
 A batch processing data lakehouse pipeline built with AWS and Databricks using PySpark.
