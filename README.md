@@ -9,7 +9,7 @@ This project has been reimplemented on Azure by using **AWLS + Databricks + Powe
 ### >  Check out the Azure Implementation
 > [azure_databricks_lakehouse_pipeline](https://github.com/Bellamy0719/azure_databricks_lakehouse_pipeline)
 
-### 🧠 Project Overview
+### Project Overview
 A batch processing data lakehouse pipeline built with AWS and Databricks using PySpark.
 It fetches historical stock data, processes it through multiple layers (raw → processed → curated), and enables scalable analytics via Glue, Athena, and QuickSight.
 
